@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Symbole Nexora</title>
+  <desc id="desc">Hexagone néon violet et cyan contenant une étoile à quatre branches, sur fond sombre.</desc>
+  <defs>
+    <linearGradient id="nexora-edge" x1="28" y1="28" x2="228" y2="228" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a56bff"/>
+      <stop offset="0.48" stop-color="#7768ff"/>
+      <stop offset="1" stop-color="#46e9ff"/>
+    </linearGradient>
+    <radialGradient id="nexora-core" cx="50%" cy="44%" r="60%">
+      <stop offset="0" stop-color="#18223d"/>
+      <stop offset="1" stop-color="#0a0d18"/>
+    </radialGradient>
+    <filter id="nexora-glow" x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feComposite in="blur" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <filter id="star-glow" x="-100%" y="-100%" width="300%" height="300%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <path d="M128 13 226 69.5v113L128 239 30 182.5v-113L128 13Z" fill="url(#nexora-edge)" opacity=".22" filter="url(#nexora-glow)"/>
+  <path d="M128 22 218 74v104l-90 52-90-52V74l90-52Z" fill="url(#nexora-core)" stroke="url(#nexora-edge)" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M128 43 199 84v84l-71 41-71-41V84l71-41Z" fill="none" stroke="url(#nexora-edge)" stroke-opacity=".32" stroke-width="1.5"/>
+  <path d="M128 75 140 113 181 128 140 143 128 181 116 143 75 128 116 113 128 75Z" fill="#dffcff" filter="url(#star-glow)"/>
+  <path d="M128 84 137 119 172 128 137 137 128 172 119 137 84 128 119 119 128 84Z" fill="url(#nexora-edge)"/>
+  <circle cx="128" cy="128" r="5" fill="#fff"/>
+</svg>

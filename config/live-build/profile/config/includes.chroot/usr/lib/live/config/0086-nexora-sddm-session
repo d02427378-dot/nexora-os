@@ -1,0 +1,37 @@
+#!/bin/sh
+
+. /usr/lib/live/config.sh
+
+Init ()
+{
+	# Run only after Debian Live's SDDM component created an autologin config.
+	if ! pkg_is_installed "sddm" || \
+	   ! component_was_executed "sddm"
+	then
+		exit 0
+	fi
+
+	# Do not guess a session when Plasma Wayland is not installed.
+	if [ ! -r /etc/sddm.conf ] || \
+	   [ ! -r /usr/share/wayland-sessions/plasma.desktop ]
+	then
+		exit 0
+	fi
+
+	# Preserve intentional non-empty session choices.
+	if ! grep -q '^Session=$' /etc/sddm.conf
+	then
+		exit 0
+	fi
+
+	echo -n " nexora-sddm-session"
+}
+
+Config ()
+{
+	sed -i 's/^Session=$/Session=plasma.desktop/' /etc/sddm.conf
+	touch /var/lib/live/config/nexora-sddm-session
+}
+
+Init
+Config

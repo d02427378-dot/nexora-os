@@ -1,0 +1,25 @@
+# Theme GRUB 2 statique Nexora. Les ressources PNG sont produites par
+# scripts/render-grub-assets.py et copiées dans le répertoire du thème au build.
+desktop-image: "nexora-grub-bg.png"
+desktop-color: "#090C16"
+title-text: ""
+title-color: "#EDF0FF"
+message-color: "#93A0BF"
+message-bg-color: "#101629"
+terminal-font: "Unifont Regular 16"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+
++ boot_menu {
+  left = 8%
+  top = 38%
+  width = 48%
+  height = 46%
+  item_font = "Unifont Regular 16"
+  item_color = "#C7D3EF"
+  selected_item_color = "#FFFFFF"
+  item_height = 48
+  item_padding = 8
+}

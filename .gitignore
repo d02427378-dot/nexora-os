@@ -1,0 +1,9 @@
+# Sorties locales CMake / Qt
+/build/
+cmake-build-*/
+CMakeUserPresets.json
+# Fichiers temporaires et sauvegardes d’éditeur
+*~
+*.swp
+*.bak
+.DS_Store

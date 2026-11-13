@@ -1,0 +1,45 @@
+# Manifeste Nexora Debian Live, consommé par scripts/build-iso.sh.
+# La construction complète reste à effectuer dans un environnement Debian 13 dédié.
+live-boot
+live-config
+debian-installer-launcher
+systemd-sysv
+task-kde-desktop
+sddm
+network-manager
+pipewire
+pipewire-pulse
+wireplumber
+sudo
+bash
+coreutils
+apt
+pkexec
+polkit-kde-agent-1
+git
+curl
+ca-certificates
+firmware-linux
+firefox-esr
+dolphin
+konsole
+kate
+gwenview
+vlc
+os-prober
+
+# Runtime Nexora Desktop (shell Qt Quick / QML et Assistant IA Qt Network)
+qml6-module-qtqml
+qml6-module-qtquick
+qml6-module-qtquick-controls
+qml6-module-qtquick-layouts
+qml6-module-qtquick-window
+qml6-module-qtquick-templates
+qml6-module-qtqml-workerscript
+qml6-module-qt-labs-settings
+qml6-module-qtwebengine
+qml6-module-qt-labs-folderlistmodel
+qml6-module-qt-labs-platform
+qt6-image-formats-plugins
+qml6-module-qtmultimedia
+libqt6network6

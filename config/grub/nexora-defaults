@@ -1,0 +1,10 @@
+# À fusionner dans /etc/default/grub uniquement lors de l’intégration cible.
+# Le modèle grub.cfg.in autonome applique lui-même timeout_style et timeout.
+GRUB_DEFAULT=saved
+GRUB_TIMEOUT_STYLE=menu
+GRUB_TIMEOUT=10
+GRUB_SAVEDEFAULT=false
+GRUB_DISABLE_OS_PROBER=true
+GRUB_DISABLE_RECOVERY=true
+GRUB_TERMINAL_OUTPUT=gfxterm
+GRUB_GFXMODE=1920x1080,1280x720,auto

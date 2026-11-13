@@ -1,0 +1,50 @@
+# Nexora OS — modèle GRUB autonome (UEFI/GPT)
+# Générer une copie configurée avec scripts/render-grub-config.sh.
+# Ce modèle ne doit pas être copié ni exécuté sur l’hôte pendant les tests.
+
+if [ -f "${prefix}/grubenv" ]; then
+    load_env
+fi
+
+set timeout_style=menu
+set timeout=10
+set default=nexora
+if [ "${remember_choice}" = "1" ]; then
+    if [ -n "${saved_entry}" ]; then
+        set default="${saved_entry}"
+    fi
+fi
+
+menuentry "Rester sur Windows" --id=windows {
+    if [ "${remember_choice}" = "1" ]; then
+        set saved_entry=windows
+        save_env saved_entry
+    fi
+    search --no-floppy --fs-uuid --set=root __WINDOWS_ESP_UUID__
+    chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+}
+
+menuentry "Lancer Nexora OS" --id=nexora {
+    if [ "${remember_choice}" = "1" ]; then
+        set saved_entry=nexora
+        save_env saved_entry
+    fi
+    search --no-floppy --fs-uuid --set=root __NEXORA_BOOT_UUID__
+    linux /vmlinuz root=UUID=__NEXORA_ROOT_UUID__ ro quiet splash
+    initrd /initrd.img
+}
+
+# GRUB ne possède pas de case graphique interactive. Cette entrée agit comme
+# un interrupteur persistant; elle ne démarre aucun système à elle seule.
+menuentry "Basculer « se souvenir de mon choix »" --id=nexora-toggle-remember {
+    if [ "${remember_choice}" = "1" ]; then
+        set remember_choice=0
+        save_env remember_choice
+        echo "Mémorisation désactivée. Le choix par défaut redevient Nexora."
+    else
+        set remember_choice=1
+        save_env remember_choice
+        echo "Mémorisation activée. Le système choisi sera retenu au prochain démarrage."
+    fi
+    sleep 3
+}

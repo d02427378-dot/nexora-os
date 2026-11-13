@@ -1,0 +1,52 @@
+:root {
+  color-scheme: dark;
+  --nx-bg: #090c16;
+  --nx-surface: #101629;
+  --nx-surface-raised: #171f35;
+  --nx-surface-hover: #202b46;
+  --nx-border: #293550;
+  --nx-text: #edf0ff;
+  --nx-text-muted: #93a0bf;
+  --nx-violet: #a56bff;
+  --nx-indigo: #7771ff;
+  --nx-cyan: #41e7ff;
+  --nx-gradient: linear-gradient(120deg, var(--nx-violet), var(--nx-indigo) 52%, var(--nx-cyan));
+  --nx-focus: #70eaff;
+  --nx-success: #6ce6b3;
+  --nx-warning: #ffd479;
+  --nx-danger: #ff6f8f;
+  --nx-radius-sm: 8px;
+  --nx-radius-md: 14px;
+  --nx-radius-lg: 22px;
+  --nx-shadow-panel: 0 18px 64px rgb(0 0 0 / 38%);
+  --nx-glow: 0 0 24px rgb(107 110 255 / 24%);
+}
+
+/* Principes partagés: contrastes lisibles, focus visible, mouvement non indispensable. */
+.nx-panel {
+  color: var(--nx-text);
+  background: color-mix(in srgb, var(--nx-surface) 92%, transparent);
+  border: 1px solid var(--nx-border);
+  border-radius: var(--nx-radius-md);
+  box-shadow: var(--nx-shadow-panel);
+  backdrop-filter: blur(22px);
+}
+
+.nx-accent {
+  color: var(--nx-text);
+  background: var(--nx-gradient);
+}
+
+:focus-visible {
+  outline: 2px solid var(--nx-focus);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

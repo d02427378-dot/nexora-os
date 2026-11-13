@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+  <title id="title">Démarrage de Nexora OS</title>
+  <desc id="desc">Écran de démarrage Nexora sombre. Le halo de l’hexagone et l’étoile centrale pulsent doucement.</desc>
+  <defs>
+    <linearGradient id="edge" x1="248" y1="67" x2="472" y2="291" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ad70ff"/><stop offset=".5" stop-color="#7771ff"/><stop offset="1" stop-color="#41e7ff"/>
+    </linearGradient>
+    <radialGradient id="core" cx="50%" cy="44%" r="60%">
+      <stop stop-color="#18223d"/><stop offset="1" stop-color="#0a0d18"/>
+    </radialGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="9" result="blur"><animate attributeName="stdDeviation" values="6;11;6" dur="2.8s" repeatCount="indefinite"/></feGaussianBlur>
+      <feComposite in="blur" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <filter id="star-glow" x="-120%" y="-120%" width="340%" height="340%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="5" result="blur"><animate attributeName="stdDeviation" values="3;7;3" dur="2.8s" repeatCount="indefinite"/></feGaussianBlur>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="720" height="420" fill="#090c16"/>
+  <circle cx="360" cy="166" r="144" fill="#4d5fff" opacity=".06">
+    <animate attributeName="opacity" values=".04;.1;.04" dur="2.8s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="136;148;136" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+  <g filter="url(#glow)" opacity=".72">
+    <path d="M360 46 464 106v120l-104 60-104-60V106l104-60Z" fill="none" stroke="url(#edge)" stroke-width="6" stroke-linejoin="round"/>
+  </g>
+  <path d="M360 55 456 111v110l-96 56-96-56V111l96-56Z" fill="url(#core)" stroke="url(#edge)" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M360 77 437 122v88l-77 45-77-45v-88l77-45Z" fill="none" stroke="url(#edge)" stroke-opacity=".32" stroke-width="1.5"/>
+  <g filter="url(#star-glow)">
+    <path d="m360 100 14 47 48 19-48 18-14 48-14-48-48-18 48-19 14-47Z" fill="#dcfbff"/>
+    <animateTransform attributeName="transform" type="scale" values="1;1.06;1" dur="2.8s" repeatCount="indefinite" additive="sum"/>
+  </g>
+  <circle cx="360" cy="166" r="5" fill="#fff"/>
+  <text x="360" y="349" text-anchor="middle" fill="#e9edff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" letter-spacing="5">NEXORA OS</text>
+  <text x="360" y="381" text-anchor="middle" fill="#8290b2" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" letter-spacing="3">UNIVERSE EN COURS DE CHARGEMENT</text>
+  <rect x="292" y="396" width="136" height="2" rx="1" fill="#202941"/>
+  <rect x="292" y="396" width="36" height="2" rx="1" fill="url(#edge)">
+    <animate attributeName="x" values="292;392;292" dur="2s" repeatCount="indefinite"/>
+  </rect>
+</svg>

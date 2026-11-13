@@ -1,0 +1,14 @@
+[Unit]
+Description=Nexora OS Desktop Shell
+After=plasma-core.target
+PartOf=plasma-core.target
+
+[Service]
+Type=simple
+Environment=QT_QPA_PLATFORM=wayland
+ExecStart=/usr/bin/nexora-shell
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=plasma-core.target
