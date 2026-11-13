@@ -2,6 +2,19 @@
 
 Un projet de distribution Linux personnalisée, conçue pour cohabiter avec Windows. **L’ISO Debian Trixie actuelle est construite et son SHA-256 vérifié, mais le bureau reste noir dans le parcours UEFI/OVMF sous QEMU TCG; seul le démarrage direct du noyau a affiché le bureau dans le sandbox. L’installation et le dual-boot ne sont pas validés en VM.** Douze applications sont reliées au shell : Navigateur, Fichiers, Terminal, Éditeur, Images, Média, Musique, Nexora Store, Paramètres, Moniteur, Arcade Nexora et Assistant IA. Les tests applicatifs n’effacent pas les disques utilisateur; Nexora Store peut lancer une installation de paquet après confirmation et authentification système.
 
+## Installation dans VirtualBox — deux méthodes
+
+1. **ISO complète** : télécharge les deux morceaux depuis la [release v0.1.0-alpha](https://github.com/d02427378-dot/nexora-os/releases/tag/v0.1.0-alpha), recompose l’ISO, puis démarre-la dans une VM neuve. Suis le [guide des deux méthodes](docs/methodes-installation.md) et le [guide de recomposition](docs/telechargement-iso-github.md). Le démarrage UEFI dans VirtualBox n’est pas encore vérifié; arrête-toi si le bureau live reste noir.
+2. **Commande terminal tout-en-un** : dans une VM neuve **Debian 13 avec KDE Plasma déjà installé**, télécharge le ZIP du dépôt via **Code → Download ZIP**, extrais-le dans `~/nexora-os-main`, puis ouvre Konsole et lance :
+
+   ```sh
+   cd "$HOME/nexora-os-main" && sudo bash scripts/install-nexora-vm.sh
+   ```
+
+   Le script installe les dépendances, compile le shell et les applications Nexora, puis active leur démarrage dans la session Plasma. Il **ajoute Nexora à Debian**; il ne transforme pas la VM en distribution autonome et ne modifie ni partition, ni GRUB, ni SDDM. Il demande de taper `OUI` avant toute installation. Il n’a pas encore été exécuté dans une VM VirtualBox réelle.
+
+**Dans les deux cas, utilise uniquement un VDI neuf, sans disque physique de l’hôte. L’installation ISO, le démarrage VirtualBox et le dual-boot avec Windows ne sont pas encore validés; ne lance pas l’installateur sur un ordinateur réel.**
+
 ## Choix de base
 
 - Debian 13 « Trixie » `amd64` est épinglée dans le profil live-build pour rendre ce build reproductible; KDE Plasma fournit le socle de bureau.
@@ -39,6 +52,7 @@ scripts/test-store-runtime.sh
 scripts/test-mini-games-runtime.sh
 scripts/test-assistant-runtime.sh
 scripts/test-terminal-runtime.sh
+scripts/test-install-nexora-vm.sh
 ctest --test-dir build/desktop --output-on-failure
 ```
 

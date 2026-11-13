@@ -3,6 +3,7 @@
 **Édition de test — 13 novembre 2026.** Nexora OS est un prototype fonctionnel basé sur Debian 13, KDE Plasma et un shell Qt 6/QML. L’ISO est construite et son empreinte a été vérifiée. Toutefois, le démarrage graphique UEFI normal n’est pas validé : dans QEMU/OVMF avec accélération TCG, le menu GRUB apparaît, puis le bureau reste noir. Le shell et `graphical.target` sont actifs d’après la console série. Les essais avec les deux backends logiciels Qt Quick n’ont pas corrigé l’affichage. Une tentative temporaire avec `nomodeset` n’a produit qu’une capture framebuffer corrompue, sans preuve que la session live ait démarré; ce résultat n’est pas concluant et l’option n’a pas été intégrée à l’ISO. Un essai technique qui démarre directement le noyau et l’initrd montre le bureau, mais ne valide pas le démarrage UEFI normal. **N’installez pas cette image sur un ordinateur ou un disque réel.** L’installation et le dual-boot avec Windows doivent d’abord réussir dans une VM dédiée.
 
 Pour les contrôles, le partitionnement et les avertissements préalables, consulter le [guide ISO et installation dual-boot](phase-6-iso-installation.md).
+Pour choisir entre le démarrage de l’ISO et l’installation du shell dans Debian 13/KDE, voir le [guide des deux méthodes VirtualBox](methodes-installation.md).
 
 ## 1. Premier essai — VM uniquement
 
